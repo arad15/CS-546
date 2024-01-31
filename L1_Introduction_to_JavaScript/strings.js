@@ -28,7 +28,7 @@ var varString = "I'm a string, and I am function scoped";
 let myConcatString = letString + ' ' + varString;
 console.log(myConcatString);
 
-let myConcatString2 = `I am letstring: ${letString} 
+let myConcatString2 = `I am letstring: ${letString} // template literal
 
 
 
@@ -44,4 +44,10 @@ console.log(letString.concat(' ' + varString + " I'm more text"));
 
 let myString1 = 'Hello there, How are you? My name is Patrick Hill';
 
-console.log(myString1.split(' ?'));
+console.log(myString1.split('?')); // converts into array based on spaces with ' ', or ? with '?', etc
+
+//single line comment
+
+/* Multi line
+another line commented here
+now we end it */

@@ -17,6 +17,8 @@ console.log(myObj);
 
 myObj.directlyAddedKey = "I've been added!";
 console.log(myObj);
+// NOTE: this doesn't work with just a number: do myObj[7] = "I'm 7" instead
+
 
 let keyName = 'myStrKey';
 myObj[keyName] = 'This was made dynamically';
@@ -31,23 +33,24 @@ console.log(myObj.myFn('Hey Patrick'));
 myObj[7] = "I'm 7";
 console.log(myObj);
 
-//spread opeator
+//spread opeator (combining Objects)
 let mySpreadObj1 = {a: 1, b: 2, c: 3};
 let mySpreadObj2 = {a: 25, d: 4, e: 5};
+// a becomes 1 in myCombinedObj because mySpreadObj1 is called second, and these are matching keys
 let myCombinedObj = {...mySpreadObj2, ...mySpreadObj1};
 console.log(myCombinedObj);
 // myObj["hello"]
 // myObj.hello
 
-//object as a constat.
+//object as a constant: You can add, remove, and change keys and their values.
 const myConstObj = {a: 1, b: 2, c: 3};
 console.log(myConstObj);
 myConstObj.c = 4;
 console.log(myConstObj);
-myConstObj.d = 6;
+myConstObj.d = 6; 
 console.log(myConstObj);
+//myConstObj = {a: 1, b: 2}; // THIS FAILS, 46-51 are all valid
 
-myConstObj = {a: 1, b: 2};
 //object equality
 /*
   we CANNOT check if two objects are equal to each other using == or ===
@@ -66,3 +69,5 @@ let myObj5 = {c: 3, a: 1, b: 10};
 //The below two objects ARE equal to each other. The each have the same keys, with the same values for those keys (even the nested object)
 let myObj6 = {a: 1, b: 2, c: {d: 4, e: 5, f: 6}};
 let myObj7 = {c: {e: 5, f: 6, d: 4}, a: 1, b: 2};
+
+// REMEMBER: Order doesn't matter in Objects

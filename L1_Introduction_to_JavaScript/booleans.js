@@ -22,7 +22,7 @@ if (falseVar) {
   console.log('falseVar is not true; this is good');
 }
 
-if (nullVar) {
+if (nullVar) { // null is treated as True
   console.log('nullVar evaluates to true');
 } else {
   console.log('nullVar evaluates to false');
@@ -58,13 +58,13 @@ if (nonEmptyString) {
   console.log('nonEmptyString evaluates to false');
 }
 
-if (undefinedVar == nullVar) {
+if (undefinedVar == nullVar) { // == converts type based on values, like '2' == 2 is true
   console.log('undefinedVar == nullVar');
 } else {
   console.log('undefinedVar != nullVar');
 }
 
-if (undefinedVar === nullVar) {
+if (undefinedVar === nullVar) { // === is strict with type, meaning values AND types have to match
   console.log('undefinedVar === nullVar');
 } else {
   console.log('undefinedVar !== nullVar');
@@ -98,7 +98,7 @@ if ('100' === 100) {
   console.log('They are not equal');
 }
 
-if (parseInt('100') === 100) {
+if (parseInt('100') === 100) { //recall parseInt() gets an int
   console.log('They are equal');
 } else {
   console.log('They are not equal');

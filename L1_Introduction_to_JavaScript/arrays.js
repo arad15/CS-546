@@ -20,7 +20,7 @@ myStringArray.forEach((value) => {
 });
 
 let myNumArraySquared = myNumArray.map((x) => {
-  return x * x;
+  return x * x; // function defined in map, which just squares each value into new array myNumArraySquared
 });
 
 console.log(myNumArray);
@@ -33,13 +33,13 @@ let oddNumbers = myNumArray.filter((num) => {
 console.log(oddNumbers);
 
 let worldArray = myStringArray.filter((element) => {
-  return element === 'world';
+  return element === 'world'; // filters only for strings that say 'world'
 });
 
 console.log(worldArray);
 
 let findPatrick = myStringArray.find((element) => {
-  return element === 'world';
+  return element === 'world'; // find only returns the first instance, so it won't return an array
 });
 
 console.log(findPatrick);
@@ -56,8 +56,11 @@ myNumArray.push(6);
 console.log(myNumArray);
 myNumArray.push('Patrick');
 console.log(myNumArray);
-let popped = myNumArray.pop();
+let popped = myNumArray.pop(); // the value of popped is the element removed by .pop()
 console.log(popped);
-console.log(myNumArray);
+console.log(myNumArray); // notice that the return value for popped is no longer in myNumArray
 
 // // console.log(myNumArray.join('&&'));
+
+// type checking an array
+console.log(Array.isArray(myStringArray))

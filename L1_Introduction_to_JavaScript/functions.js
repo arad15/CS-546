@@ -23,14 +23,14 @@ let doubleUpArrow = (x) => {
 
 console.log(doubleUpArrow(10));
 
-let doubleUpArrow2 = (x) => x * 2;
+let doubleUpArrow2 = (x) => x * 2; // same as doubleUpArrow, just shorter Arrow syntax
 
 console.log(doubleUpArrow2(25));
 
 let addToTheNumber = (num) => {
   let numToAdd = num;
 
-  return (addThisMuch) => {
+  return (addThisMuch) => { // returns a function 
     return numToAdd + addThisMuch;
   };
 };
@@ -49,9 +49,9 @@ function haveAnInnerFunction() {
   }
 }
 
-//haveAnInnerFunction().myInnerFunction();
+haveAnInnerFunction().myInnerFunction();
 
-// myInnerFunction();
+myInnerFunction();
 
 function demonstrateVarVersusLet() {
   // Say you want to do some basic counts, like count the number of odds and then
@@ -60,10 +60,10 @@ function demonstrateVarVersusLet() {
   // Change this between "odd", "even", and "both";
   const whatDoICount = 'both';
   const howManyToCount = 12;
-  let count;
+
   if (whatDoICount === 'odd' || whatDoICount === 'both') {
     // CHANGE THIS BETWEEN `var` and `let` to see difference!
-    //let count;
+    var count;
     for (let i = 0; i < howManyToCount; i++) {
       if (i % 2 === 1) {
         if (count === undefined) {
@@ -79,7 +79,7 @@ function demonstrateVarVersusLet() {
 
   if (whatDoICount === 'even' || whatDoICount === 'both') {
     // CHANGE THIS BETWEEN `var` and `let` to see difference!
-    //let count;
+    var count;
     for (let i = 0; i < howManyToCount; i++) {
       if (i % 2 === 0) {
         if (count === undefined) {
@@ -93,7 +93,7 @@ function demonstrateVarVersusLet() {
     }
   }
 
-  //console.log(count);
+  console.log('Count:', count);
 }
 
 demonstrateVarVersusLet();
