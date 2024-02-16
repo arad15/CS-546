@@ -1,4 +1,4 @@
-import bluebird from 'bluebird';
+import bluebird from 'bluebird'; // still need async to Promisify, as async only works with Promises
 import prompt from 'prompt';
 import fs from 'fs';
 const fsPromise = bluebird.promisifyAll(fs);
@@ -12,7 +12,7 @@ async function main() {
   };
 
   // Gets result of user input
-  let promptResult = await promptPromise.getAsync([getFileOperation]);
+  let promptResult = await promptPromise.getAsync([getFileOperation]); // awaits the async function output of get()
   console.log(promptResult);
   const fileName = promptResult.fileName;
 
@@ -24,7 +24,8 @@ async function main() {
 
   const fileContent = await fsPromise.readFileAsync(fileName, 'utf-8');
 
-  const reversedContent = fileContent.split('').reverse().join('');
+  // no need for await, as this is not an asynchronous operation
+  const reversedContent = fileContent.split('').reverse().join(''); 
 
   const reversedName = `reversed_${fileName}`;
 
@@ -36,7 +37,7 @@ async function main() {
   return null;
 }
 
-// Now we run it
+// Now we run it, catching any errors that occur
 main().catch((err) => {
   console.log(err);
 });

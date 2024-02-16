@@ -1,9 +1,11 @@
-import {getApiData} from './getdata.js';
+import {getApiData} from './getdata.js'; // importing getApiData function
 
 async function main() {
   //try removing the await keyword and run the application
   try {
-    console.log(await getApiData());
+    console.log(await getApiData()); // await a call to getApiData function
+    // all code that depended on the above results here (why do we need await again?)
+    // we avait in console.log(getApiDate()) because it tries to log while the data request is pending
     console.log('Another console.log that depends on getApiData');
   } catch (e) {
     console.log(e);
