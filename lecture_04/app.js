@@ -1,12 +1,13 @@
 import dogData from './dogs.js';
 import postData from './posts.js';
 import {dbConnection, closeConnection} from './mongoConnection.js';
-//lets drop the database each time this is run
+//lets drop the database each time this is run (we get the connection to drop the database)
+//this ensures that we don't have 50 versions of the same database
 
 const db = await dbConnection();
 await db.dropDatabase();
 
-//defining these here so I can use them later in the function
+//defining these here so I can use them later in the function (not exclusively in the try-catch block)
 let sasha = undefined;
 let max = undefined;
 let porkChop = undefined;

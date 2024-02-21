@@ -7,14 +7,15 @@ const getCollectionFn = (collection) => {
 
   return async () => {
     if (!_col) {
-      const db = await dbConnection();
-      _col = await db.collection(collection);
+      const db = await dbConnection(); // connects to the database
+      _col = await db.collection(collection); // connects to the collection
     }
 
     return _col;
   };
 };
 
+// BELOW is what you change for the labs
 /* Now, you can list your collections here: */
 export const posts = getCollectionFn('posts');
 export const dogs = getCollectionFn('dogs');
