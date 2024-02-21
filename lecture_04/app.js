@@ -292,5 +292,5 @@ try {
   console.log(e);
 }
 
-await closeConnection();
+await closeConnection(); // NEED THIS FOR LECTURE 4 + LAB 4 to bracefully exit the application
 console.log('Done!');
