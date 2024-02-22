@@ -1,9 +1,9 @@
-import dogData from './dogs.js';
-import postData from './posts.js';
-import {dbConnection, closeConnection} from './mongoConnection.js';
+import dogData from "./dogs.js"; // dog methods
+import postData from "./posts.js"; // post methods
+import { dbConnection, closeConnection } from "./mongoConnection.js";
+
 //lets drop the database each time this is run (we get the connection to drop the database)
 //this ensures that we don't have 50 versions of the same database
-
 const db = await dbConnection();
 await db.dropDatabase();
 
@@ -18,33 +18,33 @@ let sashaPost = undefined;
 console.log("Let's add some dogs!");
 
 try {
-  sasha = await dogData.addDog('Sasha   ', ['Cheagle', 'Chihuaha', 'Beagle']);
-  console.log('Sasha the dog has been added, now she will blog!');
+  sasha = await dogData.addDog("Sasha   ", ["Cheagle", "Chihuaha", "Beagle"]);
+  console.log("Sasha the dog has been added, now she will blog!");
   console.log(sasha);
 } catch (e) {
   console.log(e);
 }
 
 try {
-  max = await dogData.addDog('Max', ['Mastiff']);
-  console.log('Max the dog has been added, now she will blog!');
+  max = await dogData.addDog("Max", ["Mastiff"]);
+  console.log("Max the dog has been added, now she will blog!");
   console.log(max);
 } catch (e) {
   console.log(e);
 }
 
 try {
-  porkChop = await dogData.addDog('Pork Chop', [
-    'Golden Retriever',
-    'Labrador'
+  porkChop = await dogData.addDog("Pork Chop", [
+    "Golden Retriever",
+    "Labrador",
   ]);
-  console.log('Pork Chop the dog has been added, now she will blog!');
+  console.log("Pork Chop the dog has been added, now she will blog!");
   console.log(porkChop);
 } catch (e) {
   console.log(e);
 }
 
-console.log('Lets now get all dogs from the DB');
+console.log("Lets now get all dogs from the DB");
 
 try {
   const dogList = await dogData.getAllDogs();
@@ -53,13 +53,13 @@ try {
   console.log(e);
 }
 
-console.log('Now lets add some posts!');
+console.log("Now lets add some posts!");
 
 try {
   maxPost = await postData.addPost(
-    'The Case of the Stolen Bone',
+    "The Case of the Stolen Bone",
     "It was 2015 when it happened. Someone stole the bone, and hid it in a hole outside. It's a good thing that I hide all my bones in holes outside, or I would have never found. I then realized that, all along, it was me who hid the bone.",
-    max._id.toString()
+    max._id.toString() // id is max's id (as a string)
   );
   console.log(maxPost);
 } catch (e) {
@@ -68,7 +68,7 @@ try {
 
 try {
   porkChopPost = await postData.addPost(
-    'Who Am I?',
+    "Who Am I?",
     "They call me Pork Chop. I don't like Pork! I only eat Turkey! I DON'T KNOW WHO I AM!",
     porkChop._id.toString()
   );
@@ -88,7 +88,7 @@ try {
   console.log(e);
 }
 
-console.log('Now lets get all posts!');
+console.log("Now lets get all posts!");
 
 try {
   const postList = await postData.getAllPosts();
@@ -102,11 +102,11 @@ console.log("Let's change the title of Sasha's post...");
 try {
   const updatedPost = await postData.updatePost(
     sashaPost._id.toString(),
-    "For Love of Bleu d'Auvergne",
+    "For Love of Bleu d'Auvergne", // new title, rest of the data is retained (body and _id fields)
     sashaPost.body,
-    sashaPost.poster.id.toString()
+    sashaPost.poster.id.toString() // don't forget _id needs to be a string!!!!!!
   );
-  console.log('Now, the post is:');
+  console.log("Now, the post is:");
   console.log(updatedPost);
 } catch (e) {
   console.log(e);
@@ -126,8 +126,8 @@ console.log("Let's update a dog");
 try {
   const updatedSashasName = await dogData.updateDog(
     sasha._id.toString(),
-    'Dharma',
-    ['Husky', 'American Eskimo']
+    "Dharma", // change sashas name
+    ["Husky", "American Eskimo"] // change sashas breed
   );
   console.log("Now Sasha's name is:");
   console.log(updatedSashasName);
@@ -138,7 +138,7 @@ try {
 console.log("Let's now delete poor Max");
 
 try {
-  const deleted = await dogData.removeDog(max._id.toString());
+  const deleted = await dogData.removeDog(max._id.toString()); // remove by string representation of id
   console.log(deleted);
 } catch (e) {
   console.log(e);
@@ -148,25 +148,25 @@ console.log("Now let's test some dog cases that fail");
 
 //dog method fails
 try {
-  const fail = await dogData.addDog('   ', ['Husky']);
+  const fail = await dogData.addDog("   ", ["Husky"]);
 } catch (e) {
   console.log(e);
 }
 
 try {
-  const fail = await dogData.addDog('BowWow', ['', 'husky']);
+  const fail = await dogData.addDog("BowWow", ["", "husky"]);
 } catch (e) {
   console.log(e);
 }
 
 try {
-  const fail = await dogData.addDog('Lucy', [123]);
+  const fail = await dogData.addDog("Lucy", [123]);
 } catch (e) {
   console.log(e);
 }
 
 try {
-  const fail = await dogData.addDog(123, ['Husky']);
+  const fail = await dogData.addDog(123, ["Husky"]);
 } catch (e) {
   console.log(e);
 }
@@ -178,19 +178,19 @@ try {
 }
 
 try {
-  const fail1 = await dogData.addDog('George');
+  const fail1 = await dogData.addDog("George");
 } catch (e) {
   console.log(e);
 }
 
 try {
-  const fail1 = await dogData.addDog('BooBoo', []);
+  const fail1 = await dogData.addDog("BooBoo", []);
 } catch (e) {
   console.log(e);
 }
 
 try {
-  const fail1 = await dogData.updateDog(123, '', []);
+  const fail1 = await dogData.updateDog(123, "", []);
 } catch (e) {
   console.log(e);
 }
@@ -202,7 +202,7 @@ try {
 }
 
 try {
-  const fail1 = await dogData.removeDog('123');
+  const fail1 = await dogData.removeDog("123");
 } catch (e) {
   console.log(e);
 }
@@ -219,7 +219,7 @@ try {
 }
 
 try {
-  const fail1 = await dogData.getDogById('123');
+  const fail1 = await dogData.getDogById("123");
 } catch (e) {
   console.log(e);
 }
@@ -233,14 +233,14 @@ try {
 //posts cases that fail
 
 try {
-  const fail1 = await postData.addPost(123, 'Test body', 123);
+  const fail1 = await postData.addPost(123, "Test body", 123);
 } catch (e) {
   console.log(e);
 }
 
 try {
   const fail1 = await postData.addPost(
-    'The time my band opened for Stone Sour',
+    "The time my band opened for Stone Sour",
     "It was back in 2007 at the Chance theatre in Poughkeepsie NY.  I hung out mostly with Stone Sour's drummer Roy...... Corey Taylor also offered me a sip of his drink which was straight Southern Comfort.. Of course I took it even though I hated Southern Comfort.  When Corey offers you a drink, you take it!......",
     123
   );
@@ -249,7 +249,7 @@ try {
 }
 
 try {
-  const fail1 = await postData.addPost('It was a clear black night', 789, 123);
+  const fail1 = await postData.addPost("It was a clear black night", 789, 123);
 } catch (e) {
   console.log(e);
 }
@@ -262,8 +262,8 @@ try {
 
 try {
   const fail1 = await postData.addPost(
-    'It was a clear black night',
-    'a clear white moon',
+    "It was a clear black night",
+    "a clear white moon",
     123
   );
 } catch (e) {
@@ -272,8 +272,8 @@ try {
 
 try {
   const fail1 = await postData.addPost(
-    '    ',
-    'this will fail because of first input',
+    "    ",
+    "this will fail because of first input",
     123
   );
 } catch (e) {
@@ -281,16 +281,17 @@ try {
 }
 
 try {
-  const fail1 = await postData.addPost('Testing', 'this case will fail', '123');
+  const fail1 = await postData.addPost("Testing", "this case will fail", "123");
 } catch (e) {
   console.log(e);
 }
 
 try {
-  const fail1 = await postData.addPost('Testing', 'this case will fail');
+  const fail1 = await postData.addPost("Testing", "this case will fail");
 } catch (e) {
   console.log(e);
 }
 
 await closeConnection(); // NEED THIS FOR LECTURE 4 + LAB 4 to bracefully exit the application
-console.log('Done!');
+// if we don't include this, we would have to do ctrl+C in the terminal to exit the app
+console.log("Done!");
