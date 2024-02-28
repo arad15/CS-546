@@ -1,16 +1,20 @@
-import {Router} from 'express';
-const router = Router();
+import {Router} from 'express'; // router dictates how to respond to particular requests
+const router = Router(); // make an instance of Router
 import {postData} from '../data/index.js';
 import validation from '../data/validation.js';
 
+// two different ways of writing route functions
+
+// PREFERRED
 router
-  .route('/')
+  .route('/') // supplies a string for the root route (current path we're in
+  // here, we daisy-chain the different HTTP Verbs
   .get(async (req, res) => {
     try {
       const postList = await postData.getAllPosts();
-      return res.json(postList);
+      return res.json(postList); // return a response to exit the function
     } catch (e) {
-      return res.status(500).send(e);
+      return res.status(500).send(e); // or res.status(500).json({error: e});
     }
   })
   .post(async (req, res) => {
@@ -27,7 +31,8 @@ router
   });
 
 router
-  .route('/:id')
+  .route('/:id') // a parameter route (dynamic url parameter; we don't know what this id is) 
+  // notes: we named this as id
   .get(async (req, res) => {
     try {
       req.params.id = validation.checkId(req.params.id);
@@ -98,4 +103,4 @@ router
 //   res.json(x);
 // });
 
-export default router;
+export default router; // our routes for posts are done

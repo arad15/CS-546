@@ -9,7 +9,7 @@ let exportedMethods = {
     return userList;
   },
   async getUserById(id) {
-    id = validation.checkId(id);
+    id = validation.checkId(id); // replaces all the repeated validation code from Lecture 4
     const userCollection = await users();
     const user = await userCollection.findOne({_id: new ObjectId(id)});
     if (!user) throw 'Error: User not found';

@@ -3,8 +3,10 @@ const router = Router();
 import {userData} from '../data/index.js';
 import validation from '../data/validation.js';
 
+// the order of the route matters
+
 router
-  .route('/:id')
+  .route('/:id') // id route
   .get(async (req, res) => {
     try {
       req.params.id = validation.checkId(req.params.id);
@@ -30,7 +32,7 @@ router
   });
 
 router
-  .route('/')
+  .route('/') // root route
   .get(async (req, res) => {
     try {
       const userList = await userData.getAllUsers();
