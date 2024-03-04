@@ -32,7 +32,7 @@ router
 
 router
   .route('/:id') // a parameter route (dynamic url parameter; we don't know what this id is) 
-  // notes: we named this as id
+  // note: we named this as id
   .get(async (req, res) => {
     try {
       req.params.id = validation.checkId(req.params.id);
