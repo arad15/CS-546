@@ -1,7 +1,8 @@
+// this file clears out the movies database and repopulate it
 import advMongo from './advanced_mongo.js';
-import {runSetup} from './advanced_startup_docs.js';
+import {runSetup} from './advanced_startup_docs.js'; // composing all the movies data and clearing DB at each run
 
-//First lets run the start up to create the data in the DB Can be commented out after first run to perserve DB
+//First lets run the start up to create the data in the DB. Can be commented out after first run to perserve DB
 const startUp = await runSetup();
 
 //Now we can experiment calling the advanced query functions.

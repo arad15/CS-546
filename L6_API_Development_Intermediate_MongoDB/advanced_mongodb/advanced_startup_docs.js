@@ -13,7 +13,7 @@ async function runSetup() {
   }
 
   const movieCollection = await db.collection('advancedMovies');
-  let docId = 0;
+  let docId = 0; // we use integers in this case instead of objectIds, incremented for each makeDoc() called
 
   const makeDoc = function (title, rating, released, director) {
     return {
@@ -29,19 +29,20 @@ async function runSetup() {
     };
   };
 
+  // movie parameter is an entire object (like the one made in makeDoc() above)
   const addReview = function (movie, title, comment, reviewer, rating) {
     const newReview = {
-      _id: v4(),
+      _id: v4(), // generate a new uuid
       title: title,
       comment: comment,
       reviewer: reviewer,
       rating: rating
     };
 
-    movie.reviews.push(newReview);
+    movie.reviews.push(newReview); // push the new review into the review array of movie
   };
 
-  const listOfMovies = [];
+  const listOfMovies = []; // collects all created movies to insert into database all in one
 
   const inception = makeDoc('Inception', 4.5, 2015, 'Christopher Nolan');
   inception.cast.push(
@@ -52,6 +53,7 @@ async function runSetup() {
     'Marion Cotillard',
     'Tom Hardy'
   );
+  // make 3 reviews, added into the reviews subdocument of Inception document
   addReview(
     inception,
     'Really Good',
@@ -138,6 +140,7 @@ async function runSetup() {
     4.5
   );
 
+  // 2 movies with the same title, but different release years, used to demonstrate sorting by multiple fields
   const flatliners = makeDoc('Flatliners', 6.6, 1990, 'Joel Schumacher');
   flatliners.cast.push(
     'Kiefer Sutherland',
@@ -165,7 +168,7 @@ async function runSetup() {
     flatliners2017
   );
 
-  await movieCollection.insertMany(listOfMovies);
+  await movieCollection.insertMany(listOfMovies); // using the list of movies object to insert all documents in one go
 
   return await JSON.stringify(movieCollection.find().toArray());
 }
