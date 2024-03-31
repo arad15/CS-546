@@ -65,12 +65,12 @@ a:hover {
 a:visited {
   color: sienna;
 }
-
+/* psuedoclass for a link that the user has already visited */
 li {
   background-color: indigo;
   color: white;
 }
-
+/* targeting list elements */
 #divColorBorder {
   border-top: 3px solid red;
   border-bottom: 3px solid blue;
@@ -88,7 +88,7 @@ p.about,
 Class that will target p tags with the "about" class, as well as p elements 
 within p tags with the "about" class that have the "contact" class"
  */
- 
+
 /* .noBold {
   font-weight: normal;
 } */
