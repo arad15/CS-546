@@ -2,60 +2,66 @@ p {
   color: red;
   font-weight: bold;
 }
-
+/* All of our p tags will be red and bold */
 #paragraphWithID {
   color: blue;
   font-weight: normal;
 }
-
+/* 
+targeting a p tag with this id to be blue, specify the weight so it isnt bold
+(it inherits any styles from other previously set fields that are not overidden)
+ */
 h1 {
   color: salmon;
 }
-
+/* all h1s will be salmon colored */
 div h1 {
   color: green;
 }
-
+/* targeting h1s within the div */
 p:first-child {
   color: purple;
   font-weight: bolder;
 }
-
+/* target all the the first child p tags */
 p:last-child {
   color: gray;
   font-weight: normal;
   text-decoration: underline;
 }
-
+/* target all the last child p tags */
 #h1withID {
   color: pink;
   font-size: 30pt;
   text-decoration: underline;
 }
-
+/* override the previous h1 style only for this specific id */
 table,
 tr,
 td {
   border: 3px solid black;
 }
-
+/* 
+Putting a border around the table, its rows, and data (cells). 
+Could also just be 3 separate rules, but commas help here
+ */
 .btnClass {
   background-color: navy;
   color: white;
   border: 1px solid red;
 }
-
+/* We define classes to style many things the same way, like these 2 buttons */
 a {
   color: fuchsia;
-  text-decoration: none;
+  text-decoration: none; /* makes it so that our link to My Homepage is not underlined */
   font-size: 32pt;
 }
-
+/* psuedoclasses */
 a:hover {
   color: gold;
   text-decoration: underline;
 }
-
+/* psuedoclass for when the mouse is HOVERING over the element */
 a:visited {
   color: sienna;
 }
@@ -71,14 +77,18 @@ li {
   border-right: 3px dotted green;
   border-left: 3px dashed salmon;
 }
-
+/* id for a div tag to show bordering functionality */
 p.about,
 .contact p {
   color: cyan;
   text-decoration: none;
   font-weight: bold;
 }
-
+/* 
+Class that will target p tags with the "about" class, as well as p elements 
+within p tags with the "about" class that have the "contact" class"
+ */
+ 
 /* .noBold {
   font-weight: normal;
 } */
