@@ -4,14 +4,15 @@
 <head>
     <meta charset="utf-8">
     <title>My Site</title>
-    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/main.css"> {{!-- link to the stylesheet --}}
 </head>
 
 <body>
     <header>
         <nav>
             <ul>
-                <li><a href="/posts/new">Add a Post</a></li>
+                {{!-- link to add a new post (a page for a user to submit a form) --}}
+                <li><a href="/posts/new">Add a Post</a></li> 
             </ul>
         </nav>
         <p>I'm a header</p>
@@ -19,7 +20,7 @@
 
     <p>I will be on every page of the site</p>
     <main>
-        {{{body}}}
+        {{{body}}} {{!-- "moustaches": injects these elements to be repeated on every site (dynamic html) --}}
     </main>
     <footer>I'm a footer</footer>
 

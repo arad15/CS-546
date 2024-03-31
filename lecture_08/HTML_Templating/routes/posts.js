@@ -4,22 +4,24 @@ import {postData, userData} from '../data/index.js';
 import validation from '../validation.js';
 
 router.route('/new').get(async (req, res) => {
-  const users = await userData.getAllUsers();
-  res.render('posts/new', {users: users});
+  const users = await userData.getAllUsers(); // first gets all users because of the Poster drop-down
+  res.render('posts/new', {users: users}); // pass all users to views/posts/new.handlebars 
 });
 router
   .route('/')
   .get(async (req, res) => {
     try {
-      const postList = await postData.getAllPosts();
-      res.render('posts/index', {posts: postList});
+      const postList = await postData.getAllPosts(); // querying database for all posts
+      // instead of res.json, we a rendering the handlebars file
+      // 2 parameters: the handlebar file to render, and the data passed into the template
+      res.render('posts/index', {posts: postList}); // loads views/posts/index.handlebars
     } catch (e) {
       res.status(500).json({error: e});
     }
   })
   .post(async (req, res) => {
     const blogPostData = req.body;
-    let errors = [];
+    let errors = []; // we push any of the following errors into an array
     try {
       blogPostData.title = validation.checkString(blogPostData.title, 'Title');
     } catch (e) {
@@ -50,8 +52,10 @@ router
       }
     }
 
+    // if any errors occur, pass them into the template
     if (errors.length > 0) {
-      const users = await userData.getAllUsers();
+      const users = await userData.getAllUsers(); // need to do this again to pass onto the template below
+      // pass in array of errors and the data that was filled out, and then we repopulate the dropdown with all users
       res.render('posts/new', {
         errors: errors,
         hasErrors: true,
@@ -61,10 +65,12 @@ router
       return;
     }
 
+    // if the user submitted correct data:
     try {
       const {title, body, tags, posterId} = blogPostData;
       const newPost = await postData.addPost(title, body, posterId, tags);
-      res.redirect(`/posts/${newPost._id}`);
+      res.redirect(`/posts/${newPost._id}`); // redirect user to their created post as a rendered page
+      // runs the code in route(':/id').get
     } catch (e) {
       res.status(500).json({error: e});
     }
@@ -77,13 +83,14 @@ router
   .route('/:id')
   .get(async (req, res) => {
     try {
-      req.params.id = validation.checkId(req.params.id, 'Id URL Param');
+      req.params.id = validation.checkId(req.params.id, 'Id URL Param'); 
     } catch (e) {
       return res.status(400).json({error: e});
     }
     try {
-      const post = await postData.getPostById(req.params.id);
-      res.render('posts/single', {post: post});
+      const post = await postData.getPostById(req.params.id);// query db for one specific route
+      res.render('posts/single', {post: post}); // render the single.handlebars, passing in the single post
+      // this is also ran after successfully creating a post using the form
     } catch (e) {
       res.status(404).json({error: e});
     }

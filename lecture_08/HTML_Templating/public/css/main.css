@@ -1,12 +1,12 @@
 * {
   box-sizing: border-box;
 }
-
+/* universal rule (applies to all elements */
 html,
 body {
   font-size: 14pt;
 }
-
+/* font size of html and body */
 body {
   background: #0e9297;
   font-family: Georgia, Cambria, 'Times New Roman', Times, serif;
@@ -16,7 +16,7 @@ main {
   max-width: 75%;
   margin: auto;
 }
-
+/* ruleset for our main element */
 header {
   border-bottom: 1px solid #afafaf;
 }
@@ -28,9 +28,9 @@ h4,
 h5,
 h6 {
   color: #222;
-  margin-bottom: 5px;
+  margin-bottom: 5px; /* 5 pixels of space at the bottom of each header */
 }
-
+/* rules for all types of headers */
 h1 {
   font-size: 2rem;
 }
@@ -61,10 +61,10 @@ p {
 }
 
 .post {
-  width: 75%;
+  width: 75%; /* of parents' width, not the whole page */
   border-bottom: 1px dashed #333;
 }
-
+/* classes */
 .new-post-form {
   max-width: 300px;
 }
@@ -83,7 +83,7 @@ label {
 .error-list li {
   color: #ff0000;
 }
-
+/* make the error red */
 .author-link,
 .author-link:link {
   color: #228b22;
@@ -93,7 +93,7 @@ label {
   font-style: italic;
   color: saddlebrown;
 }
-
+/* psuedoclasses handling user interactions with the author-link */
 .author-link:hover {
   font-style: normal;
   font-weight: 700;

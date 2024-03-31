@@ -1,9 +1,17 @@
+{{!-- a little fragment of html, rendered/injected into {{{body}}} in main.handlebars --}}
 <section>
   <h1>Posts</h1>
+  {{!-- {{#each posts}} loops through the array of posts --}}
+  {{! for each article, execute lines 7-10 }}
   {{#each posts}}
-  <article class="post">
-    <h2><a href="/posts/{{_id}}">{{title}}</a></h2>
-    <p>{{body}}</p>
-  </article>
+    <article class="post">
+      <h2><a href="/posts/{{_id}}">{{title}}</a></h2>
+      {{!-- we use {{}} to reference a field, whereas {{{}}} 
+    renders the html data correctly ({{}} escapes html).
+    {{body}} in main.handlebars would render plaintext. 
+    For parameters/data, we can still use {{{}}} if the data
+    has html we would like to render --}}
+      <p>{{body}}</p>
+    </article>
   {{/each}}
 </section>

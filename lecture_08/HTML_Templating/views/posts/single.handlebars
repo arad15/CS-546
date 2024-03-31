@@ -1,8 +1,10 @@
+{{!-- again, rendered in our main layout (main.handlebars) --}}
 <article class="post">
   <h1>{{ post.title }}</h1>
   <address>Posted by {{post.poster.name}}</address>
   <p>{{ post.body }}</p>
 
+{{!-- conditional rendering: if there is a tag, write out a link for each tag --}}
   {{#if post.tags.length}}
   <h3>Tags</h3>
   <ul>
