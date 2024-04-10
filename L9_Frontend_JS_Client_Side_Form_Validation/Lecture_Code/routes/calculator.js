@@ -39,6 +39,8 @@ router.post('/server', (req, res) => {
     console.log('result', result);
   } catch (e) {
     return res.render('calculator/server', {
+      // pass this so user doesn't have to refill all fields for 1 error
+      // in server.handlebars you can see value="{{<numberVariable>}}" where the fields are prefilled
       firstNumber: firstNumber,
       secondNumber: secondNumber,
       operation: operation,

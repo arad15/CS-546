@@ -45,7 +45,7 @@
     return returnFunction;
   }
 
-  const staticForm = document.getElementById('static-form');
+  const staticForm = document.getElementById('static-form'); // check static.handlebars for this id
 
   if (staticForm) {
     // We can store references to our elements; it's better to
@@ -69,7 +69,7 @@
       event.preventDefault();
 
       try {
-        // hide containers by default
+        // hide containers by default 
         errorContainer.classList.add('hidden');
         resultContainer.classList.add('hidden');
 
