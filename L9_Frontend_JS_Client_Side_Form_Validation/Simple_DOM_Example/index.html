@@ -11,22 +11,29 @@
 
 <body>
 	<p>This is a DOM example</p>
+	<!-- hidden attribute hides the element from the webpage, we can undo and redo this with the DOM -->
 	<div id="error" class="error" hidden>I'm an error. I will change through Client-Side JS</div>
 	<br>
 
 	<form method="POST" id="myForm">
+		<!-- make 1 form field and wrap it with a label -->
 		<label id="formLabel">
 			Enter Text:
 			<input type="text" id="text_input" />
 			<button type="submit">Add Item</button>
 		</label>
 	</form>
+
+	<!-- list starts off as empty, and will show the results of appendChild() -->
 	<ul id="list"> </ul>
 
+	<!-- scripts goes right before the closing body tag (last) to let the html load first (this is most efficient) -->
 
+	<!-- load the jquery library -->
 	<script src="https://code.jquery.com/jquery-3.5.1.js"
 		integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-	<script src='script.js'></script>
+	<!-- script.js for non-jquery inplementation, and script_jq.js for the jquery implementation -->
+	<script src='script_jq.js'></script>
 
 </body>
 
