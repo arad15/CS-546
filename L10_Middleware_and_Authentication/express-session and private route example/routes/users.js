@@ -22,8 +22,9 @@ router.post('/login', async (req, res) => {
   res.redirect('/private');
 });
 
+// route for logging out 
 router.get('/logout', async (req, res) => {
-  req.session.destroy();
+  req.session.destroy(); // This is all that's needed, logouts are easy
   res.send('Logged out');
 });
 
