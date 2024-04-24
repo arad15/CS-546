@@ -5,16 +5,18 @@
   let myNewTaskForm = $('#new-item-form'),
     newNameInput = $('#new-task-name'),
     newDecriptionArea = $('#new-task-description'),
-    todoArea = $('#todo-area');
+    todoArea = $('#todo-area'); // the top div in home.handlebars
 
-  //When the page loads, we want to query the server to get the TODO data as raw JSON
-  //Set up request config
+  // When the page loads, we want to query the server to get the TODO data as raw JSON
+  // get ALL the todo's and display them on the page
+  // Set up an AJAX request config
   let requestConfig = {
     method: 'GET',
     url: '/api/todo/json'
   };
-  //Make AJAX Call
+  //Make AJAX Call (AJAX request)
   $.ajax(requestConfig).then(function (responseMessage) {
+    // Note: each todo from the route /api/todo/json in api.js is a raw json, so we format it here.
     //Now we are going to loop through the data, creating each element group for each todo in the data
     //Pay attention, when I'm building the html elements, I check the notDone field and display a different
     //element depending on if the todo is done or not

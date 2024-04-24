@@ -3,11 +3,13 @@ const router = Router();
 import {makeToDo, finishToDo, getAll} from '../data/index.js';
 import xss from 'xss';
 
-//homepage routes:
+//homepage routes: rendering the homepage
 router.route('/json').get(async (req, res) => {
+  // render the home template
   res.render('home', {
     pageTitle: 'So Much ToDo!',
     h3title: 'Using Routes That Return JSON',
+    // script_partial is json_script.handlebars that loads another client-side .js file
     script_partial: 'json_script'
   });
 });
@@ -25,10 +27,13 @@ router.route('/html').get(async (req, res) => {
 router
   .route('/api/todo/json')
   .get(async (req, res) => {
-    let todos = getAll();
+    // this route gets all the todos
+    let todos = getAll(); // return an array of all objs
     res.json(todos);
   })
   .post(async (req, res) => {
+    // this route creates a todo
+
     //let cleanName = req.body.name;
     //let cleanDesc = req.body.description;
 
