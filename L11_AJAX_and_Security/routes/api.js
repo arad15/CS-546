@@ -40,9 +40,12 @@ router
     let cleanName = xss(req.body.name);
     let cleanDesc = xss(req.body.description);
     let todo = makeToDo(cleanName, cleanDesc);
+    // returns success as true and the new todo item
     res.json({success: true, todo: todo});
   });
 
+// route for when they click the button to complete a task
+// which also uses an ajax request
 router.route('/api/todo/complete/json/:id').post((req, res) => {
   const updatedData = finishToDo(parseInt(req.params.id));
   res.json(updatedData);
